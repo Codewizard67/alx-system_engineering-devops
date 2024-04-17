@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-# bash script that listens on port 98 localhost
-nc -l -p 98
+# displays all active IPv4 IPs on the machine it is executed on
+
+ifconfig | grep -Eo "inet (addr:)?([0-9]*\.){3}[0-9]*" | cut -b 11-
