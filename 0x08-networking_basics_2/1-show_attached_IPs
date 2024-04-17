@@ -1,4 +1,9 @@
-#!/usr/bin/env bash
-# Displays all acive IPv4 addresses on the machine
+#!/bin/bash
 
-ifconfig | grep -Eo "inet (addr:)?([0-9]*\.){3}[0-9]*" | cut -b 11-
+# Retrieve active IPv4 IPs using the ifconfig command
+active_ips=$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*')
+
+# Loop through each active IP and display it
+for ip in $active_ips; do
+    echo "$ip"
+done
